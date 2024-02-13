@@ -116,3 +116,4 @@ a, a:hover, a:visited {
 .mapboxgl-canvas-container.mapboxgl-touch-zoom-rotate.mapboxgl-touch-drag-pan .mapboxgl-canvas {
     touch-action: unset;
 }
+
