@@ -1,8 +1,8 @@
 var config = {
     style: 'mapbox://styles/mapbox/satellite-v9',
     accessToken: 'pk.eyJ1IjoiYXdhZG1pc2hhIiwiYSI6ImNsc2M4bHNvNTBubG0yc2tnMWpzNTU0YnEifQ.bEsaKTQjMPGRsAsqwXArqA',
-    showMarkers: true,
-    markerColor: '#3FB1CE',
+    showMarkers: false,
+    markerColor: '',
     //projection: 'equirectangular',
     //Read more about available projections here
     //https://docs.mapbox.com/mapbox-gl-js/example/projections/
@@ -12,7 +12,7 @@ var config = {
     title: 'The Title Text of this Story',
     subtitle: 'A descriptive and interesting subtitle to draw in the reader',
     byline: 'By a Digital Storyteller',
-    footer: 'Source: source citations, etc. <br> Created using <a href="https://github.com/mapbox/storytelling" target="_blank">Mapbox Storytelling</a> template.',
+    footer: '',
     chapters: [
         {
             id: 'modern-political-borders',

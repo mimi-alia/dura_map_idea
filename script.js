@@ -16,6 +16,8 @@ var alignments = {
     'full': 'fully'
 }
 
+/*********************************************    Layer Functions    *************************************************/
+
 
 function getLayerPaintType(layer) {
     var layerType = map.getLayer(layer).type;
@@ -35,15 +37,25 @@ function setLayerOpacity(layer) {
     });
 }
 
+/*********************************************    Config Functions    ************************************************/
+
+// dom sections
 var story = document.getElementById('story');
 var features = document.createElement('div');
 features.setAttribute('id', 'features');
 
 var header = document.createElement('div');
 
+
+// Elements to generate if config elements have values / text added to them
+
+// if title element in config obj is true
 if (config.title) {
+    // create an h1 element
     var titleText = document.createElement('h1');
+    // add content from config.title's value
     titleText.innerText = config.title;
+    // add to header
     header.appendChild(titleText);
 }
 
@@ -59,12 +71,15 @@ if (config.byline) {
     header.appendChild(bylineText);
 }
 
+
+// adds header generated in js to story div created in the html
 if (header.innerText.length > 0) {
     header.classList.add(config.theme);
     header.setAttribute('id', 'header');
     story.appendChild(header);
 }
 
+// chapters
 config.chapters.forEach((record, idx) => {
     var container = document.createElement('div');
     var chapter = document.createElement('div');
@@ -117,6 +132,8 @@ if (footer.innerText.length > 0) {
     footer.setAttribute('id', 'footer');
     story.appendChild(footer);
 }
+
+/*************************************    Mapbox Map Objects and Functions    ***************************************/
 
 mapboxgl.accessToken = config.accessToken;
 
