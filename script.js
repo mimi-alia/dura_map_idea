@@ -308,9 +308,9 @@ map.on("load", function() {
                 });
 
                 map.addLayer({
-                    'id': 'roman_territory_70ce',
+                    'id': 'roman_territory_200ce',
                     'type': 'fill',
-                    'source': 'roman_territory_70ce',
+                    'source': 'roman_territory_200ce',
                     'paint': {
                         'fill-color': '#0080ff', // blue color fill
                         'fill-opacity': 0.5
