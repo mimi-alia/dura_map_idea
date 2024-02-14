@@ -37,6 +37,8 @@ function setLayerOpacity(layer) {
     });
 }
 
+
+
 /*********************************************    Config Functions    ************************************************/
 
 // dom sections
@@ -157,6 +159,9 @@ var map = new mapboxgl.Map({
     projection: config.projection
 });
 
+
+
+
 // Create a inset map if enabled in config.js
 if (config.inset) {
  var insetMap = new mapboxgl.Map({
@@ -273,7 +278,27 @@ map.on("load", function() {
     if (config.auto) {
         document.querySelectorAll('[data-scrollama-index="0"]')[0].scrollIntoView();
     }
+
+    //Add layers from layers object
+    for (let key in layers){
+       map.addSource(key, layers[key])
+       
+    }
+
+    map.addLayer({
+            'id': 'dura_location',
+            'type': 'circle',
+            'source': 'dura_location',
+            'paint': {
+                'circle-radius': 10,
+                'circle-stroke-width': 2,
+                'circle-color': 'red',
+                'circle-stroke-color': 'white'
+                }
+            });
+            
 });
+    
 
 //Helper functions for insetmap
 function getInsetBounds() {
