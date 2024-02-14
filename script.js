@@ -308,9 +308,9 @@ map.on("load", function() {
                 });
 
                 map.addLayer({
-                    'id': 'parthian_territory',
+                    'id': 'roman_territory_70ce',
                     'type': 'fill',
-                    'source': 'parthian_territory',
+                    'source': 'roman_territory_70ce',
                     'paint': {
                         'fill-color': '#0080ff', // blue color fill
                         'fill-opacity': 0.5
