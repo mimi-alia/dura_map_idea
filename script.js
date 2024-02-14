@@ -308,9 +308,9 @@ map.on("load", function() {
                 });
 
                 map.addLayer({
-                    'id': 'seleucid_empire',
+                    'id': 'parthian_territory',
                     'type': 'fill',
-                    'source': 'seleucid_empire',
+                    'source': 'parthian_territory',
                     'paint': {
                         'fill-color': '#0080ff', // blue color fill
                         'fill-opacity': 0.5
