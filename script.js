@@ -306,6 +306,16 @@ map.on("load", function() {
                     'line-color': 'white'
                     }
                 });
+
+                map.addLayer({
+                    'id': 'seleucid_empire',
+                    'type': 'fill',
+                    'source': 'seleucid_empire',
+                    'paint': {
+                        'fill-color': '#0080ff', // blue color fill
+                        'fill-opacity': 0.5
+                        }
+                    });
             
 });
     
