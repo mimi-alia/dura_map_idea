@@ -60,7 +60,10 @@ var config = {
             mapAnimation: 'flyTo',
             rotateAnimation: false,
             callback: '',
-            onChapterEnter: [],
+            onChapterEnter: [{
+                layer: 'trade_routes',
+                opacity: 1,
+            }],
             onChapterExit: []
         },
         {

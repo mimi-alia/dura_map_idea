@@ -296,6 +296,16 @@ map.on("load", function() {
                 'circle-stroke-color': 'white'
                 }
             });
+    
+            map.addLayer({
+                'id': 'trade_routes',
+                'type': 'line',
+                'source': 'trade_routes',
+                'paint': {
+                    'line-width': 3,
+                    'line-color': 'white'
+                    }
+                });
             
 });
     
