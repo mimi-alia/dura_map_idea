@@ -308,9 +308,9 @@ map.on("load", function() {
                 });
 
                 map.addLayer({
-                    'id': 'roman_territory_200ce',
+                    'id': 'sassanid_territory_250sce',
                     'type': 'fill',
-                    'source': 'roman_territory_200ce',
+                    'source': 'sassanid_territory_250sce',
                     'paint': {
                         'fill-color': '#0080ff', // blue color fill
                         'fill-opacity': 0.5
