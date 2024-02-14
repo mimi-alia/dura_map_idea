@@ -281,7 +281,7 @@ map.on("load", function() {
 
     //Add layers from layers object
     for (let key in layers){
-       map.addSource(key, layers[key])
+       map.addSource(key, layers[key]);
        
     }
 
