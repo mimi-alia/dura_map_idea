@@ -308,9 +308,9 @@ map.on("load", function() {
                 });
 
                 map.addLayer({
-                    'id': 'sassanid_territory_250sce',
+                    'id': 'roman_relinquished_3ce',
                     'type': 'fill',
-                    'source': 'sassanid_territory_250sce',
+                    'source': 'roman_relinquished_3ce',
                     'paint': {
                         'fill-color': '#0080ff', // blue color fill
                         'fill-opacity': 0.5
