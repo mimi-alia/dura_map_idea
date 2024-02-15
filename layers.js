@@ -3,6 +3,7 @@ var layers = {
             'type': 'geojson',
             'data': {
                 'type': 'Feature',
+                "name" : "dura_location",
                 'geometry': {
                     'type': 'Point',
                     'coordinates': [40.7298541, 34.7484325]

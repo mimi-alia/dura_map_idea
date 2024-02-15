@@ -9,9 +9,9 @@ var config = {
     inset: false,
     theme: 'dark',
     auto: false,
-    title: 'The Title Text of this Story',
-    subtitle: 'A descriptive and interesting subtitle to draw in the reader',
-    byline: 'By a Digital Storyteller',
+    title: '',
+    subtitle: '',
+    byline: '',
     footer: '',
     chapters: [
         {
@@ -22,8 +22,8 @@ var config = {
             image: '',
             description: 'Substantial archaeological remains from the ancient city of Dura-Europos are located in modern eastern Syria, on the western bank of the Euphrates River, near the border with Iraq. The site and the objects that descend from it–including many rare survivals–are a critical resource for the study of life in antiquity.',
             location: {
-                center: [47.55553, 36.93892],
-                zoom: 4.32,
+                center: [40.76208, 34.62198],
+                zoom: 5.47,
                 pitch: 0.00,
                 bearing: 0.00
             },
@@ -34,19 +34,25 @@ var config = {
                 {
                     layer: 'dura_location',
                     opacity: 1,
-                    duration: 5000
-                }
+                    // duration: 5000
+                },
+                {
+                    layer: 'trade_routes',
+                    opacity: 0,
+                    // duration: 5000
+                },
+
             ],
             onChapterExit: [
                 {
                     layer: 'dura_location',
-                    opacity: 0
-                }
+                    opacity: 1,
+                },
             ]
         },
         {
             id: 'trade-routes',
-            alignment: 'left',
+            alignment: 'right',
             hidden: false,
             title: '',
             image: '',
@@ -60,10 +66,13 @@ var config = {
             mapAnimation: 'flyTo',
             rotateAnimation: false,
             callback: '',
-            onChapterEnter: [{
+            onChapterEnter: [
+            {
                 layer: 'trade_routes',
                 opacity: 1,
-            }],
+            },
+            
+            ],
             onChapterExit: []
         },
         {

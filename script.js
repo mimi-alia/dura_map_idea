@@ -285,41 +285,142 @@ map.on("load", function() {
        
     }
 
+    // for (let key in layers){
+    //    if (layers[key].data.geometry.type === 'Point'){
+    //     map.addLayer({
+    //         'id': key,
+    //         'type': 'circle',
+    //         'source': key,
+    //         });
+    //     // layers.trade_routes.data.features[0].geometry.type
+    //     // for (let key in layers){if (layers[key].data.type === 'FeatureCollection'){console.log(layers[key].data.features[0].geometry.type)}} 
+    //     // } else if (layers[key].data.type === 'FeatureCollection'){
+    //     //     const dataType = layers[key].data.features[0].geometry.type
+    //     //     if(dataType === 'MultiLineString'){
+    //     //         map.addLayer({
+    //     //             'id': key,
+    //     //             'type': 'line',
+    //     //             'source': key,
+    //     //             });
+    //     //     }
+
+    //    } //else if (map.getSource(layers[key])._data.features[0].geometry.type === 'Polygon' || map.getSource(layers[key])._data.features[0].geometry.type === 'Multipolygon') {
+    // //     map.addLayer({
+    // //         'id': layers[key],
+    // //         'type': 'circle',
+    // //         'source': layers[key],
+    // //         });
+
+    // //    } else {
+    // //     return;
+    // //    }
+        
+    //  }
+
     map.addLayer({
             'id': 'dura_location',
             'type': 'circle',
             'source': 'dura_location',
             'paint': {
-                'circle-radius': 10,
-                'circle-stroke-width': 2,
+                'circle-radius': 5,
+                // 'circle-stroke-width': 2,
                 'circle-color': 'red',
-                'circle-stroke-color': 'white'
+                // 'circle-stroke-color': 'white'
                 }
             });
-    
-            map.addLayer({
-                'id': 'trade_routes',
-                'type': 'line',
-                'source': 'trade_routes',
-                'paint': {
-                    'line-width': 3,
-                    'line-color': 'white'
-                    }
-                });
 
-                map.addLayer({
-                    'id': 'roman_relinquished_3ce',
-                    'type': 'fill',
-                    'source': 'roman_relinquished_3ce',
-                    'paint': {
-                        'fill-color': '#0080ff', // blue color fill
-                        'fill-opacity': 0.5
-                        }
-                    });
+    map.addLayer({
+            'id': 'trade_routes',
+            'type': 'line',
+            'source': 'trade_routes',
+            'layout': {
+                'line-cap': 'round',
+                'line-join': 'round'
+            },
+            'paint': {
+                'line-color': 'red',
+                'line-width': 2,
+                }
+            });
+
+    map.addLayer({
+        'id': 'seleucid_empire',
+        'type': 'fill',
+        'source': 'seleucid_empire', 
+        'layout': {},
+        'paint': {
+            'fill-color': '#0080ff', 
+            'fill-opacity': 0
+            }
+        });
     
+    map.addLayer({
+        'id': 'roman_territory_250ce',
+        'type': 'fill',
+        'source': 'roman_territory_250ce', 
+        'layout': {},
+        'paint': {
+            'fill-color': 'white', 
+            'fill-opacity': 0
+            }
+        });
+    
+    map.addLayer({
+        'id': 'roman_territory_70ce',
+        'type': 'fill',
+        'source': 'roman_territory_70ce', 
+        'layout': {},
+        'paint': {
+            'fill-color': 'white', 
+            'fill-opacity': 0
+            }
+        });
+
+    map.addLayer({
+        'id': 'roman_territory_200ce',
+        'type': 'fill',
+        'source': 'roman_territory_200ce', 
+        'layout': {},
+        'paint': {
+            'fill-color': 'white', 
+            'fill-opacity': 0
+            }
+        });
+
+    map.addLayer({
+        'id': 'roman_relinquished_3ce',
+        'type': 'fill',
+        'source': 'roman_relinquished_3ce', 
+        'layout': {},
+        'paint': {
+            'fill-color': 'white', 
+            'fill-opacity': 0
+            }
+        });
+        
+    map.addLayer({
+        'id': 'parthian_territory',
+        'type': 'fill',
+        'source': 'parthian_territory', 
+        'layout': {},
+        'paint': {
+            'fill-color': 'black', 
+            'fill-opacity': 0
+            }
+        });
+
+    map.addLayer({
+        'id': 'sassanid_territory_250sce',
+        'type': 'fill',
+        'source': 'sassanid_territory_250sce', 
+        'layout': {},
+        'paint': {
+            'fill-color': 'green', 
+            'fill-opacity': 0
+            }
+        });
             
 });
-    
 
 //Helper functions for insetmap
 function getInsetBounds() {
