@@ -41,6 +41,41 @@ var config = {
                     opacity: 0,
                     // duration: 5000
                 },
+                {
+                    layer: 'seleucid_empire',
+                    opacity: 0,
+                    // duration: 5000
+                },
+                {
+                    layer: 'roman_territory_250ce',
+                    opacity: 0,
+                    // duration: 5000
+                },
+                {
+                    layer: 'parthian_territory',
+                    opacity: 0,
+                    // duration: 5000
+                },
+                {
+                    layer: 'roman_territory_70ce',
+                    opacity: 0,
+                    // duration: 5000
+                },
+                {
+                    layer: 'roman_territory_200ce',
+                    opacity: 0,
+                    // duration: 5000
+                },
+                {
+                    layer: 'sassanid_territory_250sce',
+                    opacity: 0,
+                    // duration: 5000
+                },
+                {
+                    layer: 'roman_relinquished_3ce',
+                    opacity: 0,
+                    // duration: 5000
+                },
 
             ],
             onChapterExit: [
@@ -71,9 +106,13 @@ var config = {
                 layer: 'trade_routes',
                 opacity: 1,
             },
-            
             ],
-            onChapterExit: []
+            onChapterExit: [
+                {
+                    layer: 'trade_routes',
+                    opacity: 0,
+                },
+            ]
         },
         {
             id: 'seleucid-territory-300bce',
@@ -91,7 +130,12 @@ var config = {
             mapAnimation: 'flyTo',
             rotateAnimation: false,
             callback: '',
-            onChapterEnter: [],
+            onChapterEnter: [
+                {
+                    layer: 'seleucid_empire',
+                    opacity: 0.5,
+                }
+            ],
             onChapterExit: []
         },
         {
