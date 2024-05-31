@@ -161,7 +161,7 @@ var config = {
             description: 'On the other side of the Mediterranean sits the Roman Empire whose territory would steadily grow over the course of the next centuries.',
             location: {
                 center: [42.19101, 36.93892],
-                zoom: 4.32,
+                zoom: 3,
                 pitch: 0.00,
                 bearing: 0.00
             },
@@ -174,7 +174,7 @@ var config = {
                     opacity: 1,
                 },
                 {
-                    layer: 'roman_territory_70ce',
+                    layer: 'roman_territory_300_bce',
                     opacity: .5,
                 },
 

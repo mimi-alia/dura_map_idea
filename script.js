@@ -344,6 +344,17 @@ map.on("load", function() {
             });
 
     map.addLayer({
+            'id': 'roman_territory_300_bce',
+            'type': 'fill',
+            'source': 'roman_territory_300_bce',
+            'layout': {},
+            'paint': {
+                'fill-color': '#0080ff', 
+                'fill-opacity': 0,
+                }
+            });
+
+    map.addLayer({
         'id': 'seleucid_empire',
         'type': 'fill',
         'source': 'seleucid_empire', 
