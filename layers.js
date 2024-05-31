@@ -13,7 +13,7 @@ var layers = {
                 'marker-symbol': ''
                     }
                 }
-             },  
+             }, 
        trade_routes : {
             "type": "geojson",
             "data": {
