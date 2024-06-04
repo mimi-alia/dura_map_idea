@@ -87,6 +87,10 @@ var config = {
                     layer: 'roman_territory_300_bce',
                     opacity: 0,
                 },
+                {
+                    layer: 'sasanian_seized_territory_250_ce',
+                    opacity: 0,
+                },
                 
 
             ],
@@ -301,6 +305,10 @@ var config = {
                     layer: 'roman_relinquished_3ce',
                     opacity: .5,
                 },
+                {
+                    layer: 'sasanian_seized_territory_250_ce',
+                    opacity: .5,
+                },
             ],
             onChapterExit: [
                 {
@@ -309,6 +317,10 @@ var config = {
                 },
                 {
                     layer: 'roman_relinquished_3ce',
+                    opacity: 0,
+                },
+                {
+                    layer: 'sasanian_seized_territory_250_ce',
                     opacity: 0,
                 },
             ]

@@ -452,6 +452,17 @@ map.on("load", function() {
             'fill-opacity': 0
             }
         });
+
+    map.addLayer({
+        'id': 'sasanian_seized_territory_250_ce',
+        'type': 'fill',
+        'source': 'sasanian_seized_territory_250_ce', 
+        'layout': {},
+        'paint': {
+            'fill-color': 'purple', 
+            'fill-opacity': 0
+            }
+        });
             
 });
 
