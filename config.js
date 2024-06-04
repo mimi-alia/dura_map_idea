@@ -52,11 +52,6 @@ var config = {
                     // duration: 5000
                 },
                 {
-                    layer: 'parthian_territory',
-                    opacity: 0,
-                    // duration: 5000
-                },
-                {
                     layer: 'roman_territory_70ce',
                     opacity: 0,
                     // duration: 5000
@@ -242,6 +237,10 @@ var config = {
                 },
                 {
                     layer: 'roman_territory_200ce',
+                    opacity: .5,
+                },
+                {
+                    layer: 'parthian_territory_165_ce',
                     opacity: .5,
                 },
             ],

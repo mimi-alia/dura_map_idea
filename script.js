@@ -420,6 +420,17 @@ map.on("load", function() {
             }
         });
 
+        map.addLayer({
+            'id': 'parthian_territory_165_ce',
+            'type': 'fill',
+            'source': 'parthian_territory_165_ce',
+            'layout': {},
+            'paint': {
+            'fill-color': 'green', 
+            'fill-opacity': 0
+            }
+        })
+
     map.addLayer({
         'id': 'sassanid_territory_250sce',
         'type': 'fill',
