@@ -71,6 +71,23 @@ var config = {
                     opacity: 0,
                     // duration: 5000
                 },
+                {
+                    layer: 'parthian_territory_120_bce',
+                    opacity: 0,
+                },
+                {
+                    layer: 'parthian_territory_165_ce',
+                    opacity: 0,
+                },
+                {
+                    layer: 'roman_territory_165_ce',
+                    opacity: 0,
+                },
+                {
+                    layer: 'roman_territory_300_bce',
+                    opacity: 0,
+                },
+                
 
             ],
             onChapterExit: [
@@ -176,7 +193,7 @@ var config = {
             ],
             onChapterExit: [
                 {
-                    layer: 'roman_territory_70ce',
+                    layer: 'roman_territory_300_bce',
                     opacity: 0,
                 },
             ]
@@ -236,7 +253,7 @@ var config = {
                     opacity: 1,
                 },
                 {
-                    layer: 'roman_territory_200ce',
+                    layer: 'roman_territory_165_ce',
                     opacity: .5,
                 },
                 {
@@ -246,7 +263,11 @@ var config = {
             ],
             onChapterExit: [
                 {
-                    layer: 'roman_territory_200ce',
+                    layer: 'roman_territory_165_ce',
+                    opacity: 0,
+                },
+                {
+                    layer: 'parthian_territory_165_ce',
                     opacity: 0,
                 },
             ]

@@ -431,6 +431,17 @@ map.on("load", function() {
             }
         })
 
+        map.addLayer({
+            'id': 'roman_territory_165_ce',
+            'type': 'fill',
+            'source': 'roman_territory_165_ce',
+            'layout': {},
+            'paint': {
+            'fill-color': 'blue', 
+            'fill-opacity': 0
+            }
+        })
+
     map.addLayer({
         'id': 'sassanid_territory_250sce',
         'type': 'fill',
