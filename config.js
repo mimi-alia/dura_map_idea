@@ -208,13 +208,13 @@ var config = {
                     opacity: 1,
                 },
                 {
-                    layer: 'parthian_territory',
+                    layer: 'parthian_territory_120_bce',
                     opacity: .5,
                 },
             ],
             onChapterExit: [
                 {
-                    layer: 'parthian_territory',
+                    layer: 'parthian_territory_120_bce',
                     opacity: 0, 
                 },
             ]

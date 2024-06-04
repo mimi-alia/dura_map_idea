@@ -410,9 +410,9 @@ map.on("load", function() {
         });
         
     map.addLayer({
-        'id': 'parthian_territory',
+        'id': 'parthian_territory_120_bce',
         'type': 'fill',
-        'source': 'parthian_territory', 
+        'source': 'parthian_territory_120_bce', 
         'layout': {},
         'paint': {
             'fill-color': 'black', 
