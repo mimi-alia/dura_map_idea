@@ -279,6 +279,24 @@ map.on("load", function() {
         document.querySelectorAll('[data-scrollama-index="0"]')[0].scrollIntoView();
     }
 
+    //Administrative boundaries layer at country - level
+    map.addSource('countries', {
+        type: 'vector',
+        url: 'mapbox://mapbox.boundaries-adm0-v4'
+
+    });
+
+    map.addLayer({
+        'id' : 'country_boundaries',
+        'type' : 'fill',
+        'source': 'countries',
+            'layout': {},
+            'paint': {
+                'fill-color': '#0080ff', 
+                'fill-opacity': 0,
+                }
+    });
+
     //Add layers from layers object
     for (let key in layers){
        map.addSource(key, layers[key]);

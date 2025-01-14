@@ -13,7 +13,7 @@ var layers = {
                 'marker-symbol': ''
                     }
                 }
-             }, 
+        }, 
        trade_routes : {
             "type": "geojson",
             "data": {
@@ -43,7 +43,7 @@ var layers = {
                     ]
                     }
                 
-                },
+        },
        seleucid_empire: {
         "type": "geojson",
         "data": {
