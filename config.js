@@ -1,5 +1,5 @@
 var config = {
-    style: 'mapbox://styles/mapbox/satellite-streets-v12',
+    style:"mapbox://styles/mapbox/satellite-v9",
     accessToken: 'pk.eyJ1IjoiYXdhZG1pc2hhIiwiYSI6ImNsc2M4bHNvNTBubG0yc2tnMWpzNTU0YnEifQ.bEsaKTQjMPGRsAsqwXArqA',
     showMarkers: false,
     markerColor: '',
@@ -522,3 +522,4 @@ var config = {
         // },
     ]
 }
+

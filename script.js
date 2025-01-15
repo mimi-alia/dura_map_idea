@@ -159,6 +159,7 @@ var map = new mapboxgl.Map({
     projection: config.projection
 });
 
+let currentChapter;
 
 
 
@@ -215,6 +216,17 @@ map.on("load", function() {
     if (config.inset) {
     map.on('move', getInsetBounds);
     }
+    map.on("zoom", () =>{
+        console.log("hi")
+            if (currentChapter === 0) {
+                config.style = "mapbox://styles/mapbox/satellite-streets-v12";
+                map.setStyle(config.style);
+            } else if (currentChapter === 1) {
+                config.style = "mapbox://styles/mapbox/satellite-v9";
+                map.setStyle(config.style);
+            }
+    })
+    
     // setup the instance, pass callback functions
     scroller
     .setup({
@@ -224,10 +236,11 @@ map.on("load", function() {
     })
     .onStepEnter(async response => {
         var current_chapter = config.chapters.findIndex(chap => chap.id === response.element.id);
-        var chapter = config.chapters[current_chapter];
-        
+        var chapter = config.chapters[current_chapter]; 
+        currentChapter = current_chapter;
         response.element.classList.add('active');
         map[chapter.mapAnimation || 'flyTo'](chapter.location);
+        console.log(chapter)
 
         // Incase you do not want to have a dynamic inset map,
         // rather want to keep it a static view but still change the
@@ -240,6 +253,16 @@ map.on("load", function() {
             insetMap.flyTo({center: chapter.location.center, zoom: 3});
           }
         }
+        // if (current_chapter === 0){
+        //     config.style = "mapbox://styles/mapbox/satellite-streets-v12";
+        //     map.setStyle(config.style);
+        // } 
+        
+        // if (current_chapter === 1) {
+        //     config.style = "mapbox://styles/mapbox/satellite-v9";
+        //     map.setStyle(config.style);
+        // }
+
         if (config.showMarkers) {
             marker.setLngLat(chapter.location.center);
         }
@@ -268,10 +291,12 @@ map.on("load", function() {
     })
     .onStepExit(response => {
         var chapter = config.chapters.find(chap => chap.id === response.element.id);
+
         response.element.classList.remove('active');
         if (chapter.onChapterExit.length > 0) {
             chapter.onChapterExit.forEach(setLayerOpacity);
         }
+ 
     });
 
 
@@ -296,6 +321,11 @@ map.on("load", function() {
     //             'fill-opacity': 0,
     //             }
     // });
+
+
+    //update config.style based on the config.chapter, with each config.chapter after the first having a plain satellite image
+
+    
 
     //Add layers from layers object
     for (let key in layers){
