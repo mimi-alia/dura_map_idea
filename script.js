@@ -189,6 +189,7 @@ if (config.showMarkers) {
 var scroller = scrollama();
 
 
+
 map.on("load", function() {
     if (config.use3dTerrain) {
         map.addSource('mapbox-dem', {
@@ -216,17 +217,6 @@ map.on("load", function() {
     if (config.inset) {
     map.on('move', getInsetBounds);
     }
-
-    //update config.style based on the config.chapter, with each config.chapter after the first having a plain satellite image
-    map.on("zoom", () =>{
-            if (currentChapter === 0) {
-                config.style = "mapbox://styles/mapbox/satellite-streets-v12";
-                map.setStyle(config.style);
-            } else if (currentChapter === 1) {
-                config.style = "mapbox://styles/mapbox/satellite-v9";
-                map.setStyle(config.style);
-            }
-    })
     
     // setup the instance, pass callback functions
     scroller
@@ -299,6 +289,7 @@ map.on("load", function() {
         }
  
     });
+    
 
 
     if (config.auto) {
@@ -513,6 +504,18 @@ map.on("load", function() {
         });
             
 });
+
+
+//update config.style based on the config.chapter, with each config.chapter after the first having a plain satellite image
+    map.on("zoom", () =>{
+            if (currentChapter === 0) {
+                config.style = "mapbox://styles/mapbox/satellite-streets-v12";
+                map.setStyle(config.style);
+            } else if (currentChapter === 1) {
+                config.style = "mapbox://styles/mapbox/satellite-v9";
+                map.setStyle(config.style);
+            }
+    })
 
 //Helper functions for insetmap
 function getInsetBounds() {
