@@ -458,9 +458,6 @@ map.on("load", function() {
     //             'fill-opacity': 0,
     //             }
     // });
-
-
-
     
     addSourceLayers();
 
