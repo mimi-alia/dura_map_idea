@@ -216,8 +216,9 @@ map.on("load", function() {
     if (config.inset) {
     map.on('move', getInsetBounds);
     }
+
+    //update config.style based on the config.chapter, with each config.chapter after the first having a plain satellite image
     map.on("zoom", () =>{
-        console.log("hi")
             if (currentChapter === 0) {
                 config.style = "mapbox://styles/mapbox/satellite-streets-v12";
                 map.setStyle(config.style);
@@ -323,7 +324,6 @@ map.on("load", function() {
     // });
 
 
-    //update config.style based on the config.chapter, with each config.chapter after the first having a plain satellite image
 
     
 
