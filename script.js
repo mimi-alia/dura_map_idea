@@ -348,6 +348,8 @@ var scroller = scrollama();
 
 
 map.on("load", function() {
+    addSourceLayers();
+
     if (config.use3dTerrain) {
         map.addSource('mapbox-dem', {
             'type': 'raster-dem',
@@ -388,6 +390,7 @@ map.on("load", function() {
         currentChapter = current_chapter;
         response.element.classList.add('active');
         map[chapter.mapAnimation || 'flyTo'](chapter.location);
+        console.log(chapter)
 
         // Incase you do not want to have a dynamic inset map,
         // rather want to keep it a static view but still change the
@@ -461,8 +464,6 @@ map.on("load", function() {
     //             }
     // });
     
-    addSourceLayers();
-
     // for (let key in layers){
     //    if (layers[key].data.geometry.type === 'Point'){
     //     map.addLayer({
@@ -510,11 +511,13 @@ map.on("load", function() {
             }
     })    
 
-// Persist layers when basemap is reloaded
-  map.on("style.load", () => {
-    console.log("reloading");
-    addSourceLayers();
-  })
+
+    // Persist layers when basemap is reloaded
+//   map.on("style.load", () => {
+//     console.log("reloading");
+//     addSourceLayers();
+//   })
+
 
 function updateInsetLayer(bounds) {
     insetMap.getSource('boundsSource').setData(bounds);
