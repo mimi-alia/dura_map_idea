@@ -77,14 +77,14 @@ a, a:hover, a:visited {
     width: 100%;
     margin: auto;
 }
-.light {
+/* .light {
     color: #444;
     background-color: #fafafa;
 }
 .dark {
     color: #fafafa;
     background-color: #444;
-}
+} */
 .step {
     padding-bottom: 50vh;
     /* margin-bottom: 10vh; */
@@ -99,7 +99,13 @@ a, a:hover, a:visited {
     width: 100%;
 }
 .step div *{
-    margin: 5px;
+    /* margin: 5px; */
+    color: #fff;
+    padding: 5px 10px;
+    padding-inline: 0px;
+    display: inline;
+    text-align: justify;
+    background: #333333;
 }
 
 .step img {
