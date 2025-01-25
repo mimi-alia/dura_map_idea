@@ -347,6 +347,7 @@ var scroller = scrollama();
 
 
 
+
 map.on("load", function() {
     addSourceLayers();
 
@@ -391,6 +392,34 @@ map.on("load", function() {
         response.element.classList.add('active');
         map[chapter.mapAnimation || 'flyTo'](chapter.location);
         console.log(chapter)
+
+        map.on("style.load", () => {
+            addSourceLayers();
+        })
+
+        map.on("zoom", () => {
+            if (currentChapter === 0) {
+                config.style = "mapbox://styles/mapbox/satellite-streets-v12";
+                map.setStyle(config.style);
+                for (let key in layers){
+                    if (map.getLayer(key)) {
+                        map.removeLayer(key);
+                        map.removeSource(key);
+                    }                
+                 }
+            } else if (currentChapter === 1) {
+                config.style = "mapbox://styles/mapbox/satellite-v9";
+                map.setStyle(config.style);
+                for (let key in layers){
+                    if (map.getLayer(ke)) {
+                        map.removeLayer(key);
+                        map.removeSource(key);
+                    }  
+                    
+                 }
+            }
+        
+        })
 
         // Incase you do not want to have a dynamic inset map,
         // rather want to keep it a static view but still change the
@@ -498,24 +527,52 @@ map.on("load", function() {
             
 });
 
+//update config.style based on the config.chapter, with each config.chapter after the first having a plain satellite image
+    // map.on("zoom", () =>{
+    //     for (let key in layers){
+    //         map.removeLayer(key);
+    //         map.removeSource(key);
+            
+    //      }
+
+    //     addSourceLayers();
+    //     if (currentChapter === 0) {
+    //         config.style = "mapbox://styles/mapbox/satellite-streets-v12";
+    //          map.setStyle(config.style);
+    //       } else if (currentChapter === 1) {
+    //           config.style = "mapbox://styles/mapbox/satellite-v9";
+    //           map.setStyle(config.style);
+    //       }
+    // })
+
+    // map.on("zoom")
+    // for (let key in layers){
+    //     map.addSource(key, layers[key]);
+    // }
+
+    // if (currentChapter === 0){
+    //     config.style = "mapbox://styles/mapbox/satellite-streets-v12";
+    //     map.setStyle(config.style);
+    // } else if (currentChapter === 1) {
+    //     config.style = "mapbox://styles/mapbox/satellite-v9";
+    //     map.setStyle(config.style);
+    // } 
+
+  
+
+
 
 //update config.style based on the config.chapter, with each config.chapter after the first having a plain satellite image
-
-    map.on("zoom", () =>{
-            if (currentChapter === 0) {
-                config.style = "mapbox://styles/mapbox/satellite-streets-v12";
-                map.setStyle(config.style);
-            } else if (currentChapter === 1) {
-                config.style = "mapbox://styles/mapbox/satellite-v9";
-                map.setStyle(config.style);
-            }
-    })    
+ 
 
 
-    // Persist layers when basemap is reloaded
+//     // Persist layers when basemap is reloaded
 //   map.on("style.load", () => {
 //     console.log("reloading");
-//     addSourceLayers();
+//     for (let key in layers){
+//         map.addSource(key, layers[key]);
+        
+//      }
 //   })
 
 
