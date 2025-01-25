@@ -402,7 +402,7 @@ map.on("load", function() {
                 config.style = "mapbox://styles/mapbox/satellite-streets-v12";
                 map.setStyle(config.style);
                 for (let key in layers){
-                    if (map.getLayer(key)) {
+                    if (map.getLayer(ke)) {
                         map.removeLayer(key);
                         map.removeSource(key);
                     }                
