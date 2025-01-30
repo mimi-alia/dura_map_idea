@@ -23,7 +23,7 @@ var config = {
             description: 'Substantial archaeological remains from the ancient city of Dura-Europos are located in modern eastern Syria, on the western bank of the Euphrates River, near the border with Iraq. The site and the objects that descend from it–including many rare survivals–are a critical resource for the study of life in antiquity.',
             location: {
                 center: [40.76208, 34.62198],
-                zoom: 5.47,
+                zoom: 6.2,
                 pitch: 0.00,
                 bearing: 0.00
             },
@@ -99,6 +99,7 @@ var config = {
                     layer: 'dura_location',
                     opacity: 1,
                 },
+                
             ]
         },
         {
@@ -176,8 +177,8 @@ var config = {
             image: '',
             description: 'On the other side of the Mediterranean sits the Roman Empire whose territory would steadily grow over the course of the next centuries.',
             location: {
-                center: [42.19101, 36.93892],
-                zoom: 3,
+                center: [23.49145, 38.62198],
+                zoom: 5,
                 pitch: 0.00,
                 bearing: 0.00
             },
@@ -243,8 +244,8 @@ var config = {
             image: '',
             description: 'By the late 2nd century CE, the site had been absorbed into the territory of the Roman Empire to the West.',
             location: {
-                center: [40.76208, 34.62198],
-                zoom: 4.32,
+                center: [23.49145, 38.62198],
+                zoom: 5,
                 pitch: 0.00,
                 bearing: 0.00
             },
