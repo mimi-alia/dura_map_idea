@@ -245,7 +245,7 @@ var config = {
             description: 'By the late 2nd century CE, the site had been absorbed into the territory of the Roman Empire to the West.',
             location: {
                 center: [23.49145, 38.62198],
-                zoom: 5,
+                zoom: 4,
                 pitch: 0.00,
                 bearing: 0.00
             },
