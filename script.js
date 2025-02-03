@@ -60,7 +60,7 @@ function addSourceLayers(){
             }
         });
 
-map.addLayer({
+    map.addLayer({
         'id': 'trade_routes',
         'type': 'line',
         'source': 'trade_routes',
@@ -74,7 +74,7 @@ map.addLayer({
             }
         });
 
-map.addLayer({
+    map.addLayer({
         'id': 'roman_territory_300_bce',
         'type': 'fill',
         'source': 'roman_territory_300_bce',
@@ -85,7 +85,7 @@ map.addLayer({
             }
         });
 
-map.addLayer({
+    map.addLayer({
     'id': 'seleucid_empire',
     'type': 'fill',
     'source': 'seleucid_empire', 
@@ -96,7 +96,7 @@ map.addLayer({
         }
     });
 
-map.addLayer({
+    map.addLayer({
     'id': 'roman_territory_250ce',
     'type': 'fill',
     'source': 'roman_territory_250ce', 
@@ -107,7 +107,7 @@ map.addLayer({
         }
     });
 
-map.addLayer({
+    map.addLayer({
     'id': 'roman_territory_70ce',
     'type': 'fill',
     'source': 'roman_territory_70ce', 
@@ -118,7 +118,7 @@ map.addLayer({
         }
     });
 
-map.addLayer({
+    map.addLayer({
     'id': 'roman_territory_200ce',
     'type': 'fill',
     'source': 'roman_territory_200ce', 
@@ -129,7 +129,7 @@ map.addLayer({
         }
     });
 
-map.addLayer({
+    map.addLayer({
     'id': 'roman_relinquished_3ce',
     'type': 'fill',
     'source': 'roman_relinquished_3ce', 
@@ -140,7 +140,7 @@ map.addLayer({
         }
     });
     
-map.addLayer({
+    map.addLayer({
     'id': 'parthian_territory_120_bce',
     'type': 'fill',
     'source': 'parthian_territory_120_bce', 
@@ -173,7 +173,7 @@ map.addLayer({
         }
     })
 
-map.addLayer({
+    map.addLayer({
     'id': 'sassanid_territory_250sce',
     'type': 'fill',
     'source': 'sassanid_territory_250sce', 
@@ -184,7 +184,7 @@ map.addLayer({
         }
     });
 
-map.addLayer({
+    map.addLayer({
     'id': 'sasanian_seized_territory_250_ce',
     'type': 'fill',
     'source': 'sasanian_seized_territory_250_ce', 
@@ -351,6 +351,8 @@ var scroller = scrollama();
 map.on("load", function() {
     addSourceLayers();
 
+    map.setLayoutProperty(map.getStyle().layers[87].id, 'visibility', 'none');
+
     if (config.use3dTerrain) {
         map.addSource('mapbox-dem', {
             'type': 'raster-dem',
@@ -391,10 +393,12 @@ map.on("load", function() {
         currentChapter = current_chapter;
         response.element.classList.add('active');
         map[chapter.mapAnimation || 'flyTo'](chapter.location);
-        console.log(chapter)
 
+        
         map.on("style.load", () => {
             addSourceLayers();
+            map.setLayoutProperty(map.getStyle().layers[87].id, 'visibility', 'none');
+
         })
 
         map.on("zoom", () => {
@@ -415,9 +419,10 @@ map.on("load", function() {
                         map.removeLayer(key);
                         map.removeSource(key);
                     }  
-                    
                  }
+                //  map.setLayoutProperty(map[chapter.chapters[1]], "visibility", "visible");
             }
+
         
         })
 
