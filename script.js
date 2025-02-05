@@ -51,6 +51,7 @@ function addSourceLayers(){
      map.addLayer({
         'id': 'dura_location',
         'type': 'circle',
+        'slot': 'top',
         'source': 'dura_location',
         'paint': {
             'circle-radius': 5,
