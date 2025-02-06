@@ -48,22 +48,143 @@ function addSourceLayers(){
         
      }
 
-     map.addLayer({
-        'id': 'dura_location',
-        'type': 'circle',
-        'slot': 'top',
-        'source': 'dura_location',
+
+    map.addLayer({
+        'id': 'roman_territory_300_bce',
+        'type': 'fill',
+        'slot': 'bottom',
+        'source': 'roman_territory_300_bce',
+        'layout': {},
         'paint': {
-            'circle-radius': 5,
-            // 'circle-stroke-width': 2,
-            'circle-color': 'red',
-            // 'circle-stroke-color': 'white'
+            'fill-color': '#0080ff', 
+            'fill-opacity': 0,
             }
         });
 
     map.addLayer({
+    'id': 'seleucid_empire',
+    'type': 'fill',
+    'slot': 'bottom',
+    'source': 'seleucid_empire', 
+    'layout': {},
+    'paint': {
+        'fill-color': '#0080ff', 
+        'fill-opacity': 0
+        }
+    });
+
+    map.addLayer({
+    'id': 'roman_territory_250ce',
+    'type': 'fill',
+    'slot': 'bottom',
+    'source': 'roman_territory_250ce', 
+    'layout': {},
+    'paint': {
+        'fill-color': 'white', 
+        'fill-opacity': 0
+        }
+    });
+
+    map.addLayer({
+    'id': 'roman_territory_70ce',
+    'type': 'fill',
+    'slot': 'bottom',
+    'source': 'roman_territory_70ce', 
+    'layout': {},
+    'paint': {
+        'fill-color': 'white', 
+        'fill-opacity': 0
+        }
+    });
+
+    map.addLayer({
+    'id': 'roman_territory_200ce',
+    'type': 'fill',
+    'slot': 'bottom',
+    'source': 'roman_territory_200ce', 
+    'layout': {},
+    'paint': {
+        'fill-color': 'white', 
+        'fill-opacity': 0
+        }
+    });
+
+    map.addLayer({
+    'id': 'roman_relinquished_3ce',
+    'type': 'fill',
+    'slot': 'bottom',
+    'source': 'roman_relinquished_3ce', 
+    'layout': {},
+    'paint': {
+        'fill-color': 'white', 
+        'fill-opacity': 0
+        }
+    });
+    
+    map.addLayer({
+    'id': 'parthian_territory_120_bce',
+    'type': 'fill',
+    'slot': 'bottom',
+    'source': 'parthian_territory_120_bce', 
+    'layout': {},
+    'paint': {
+        'fill-color': 'black', 
+        'fill-opacity': 0
+        }
+    });
+
+    map.addLayer({
+        'id': 'parthian_territory_165_ce',
+        'type': 'fill',
+        'slot': 'bottom',
+        'source': 'parthian_territory_165_ce',
+        'layout': {},
+        'paint': {
+        'fill-color': 'green', 
+        'fill-opacity': 0
+        }
+    })
+
+    map.addLayer({
+        'id': 'roman_territory_165_ce',
+        'type': 'fill',
+        'slot': 'bottom',
+        'source': 'roman_territory_165_ce',
+        'layout': {},
+        'paint': {
+        'fill-color': 'blue', 
+        'fill-opacity': 0
+        }
+    })
+
+    map.addLayer({
+    'id': 'sassanid_territory_250sce',
+    'type': 'fill',
+    'slot': 'bottom',
+    'source': 'sassanid_territory_250sce', 
+    'layout': {},
+    'paint': {
+        'fill-color': 'green', 
+        'fill-opacity': 0
+        }
+    });
+
+    map.addLayer({
+    'id': 'sasanian_seized_territory_250_ce',
+    'type': 'fill',
+    'slot': 'bottom',
+    'source': 'sasanian_seized_territory_250_ce', 
+    'layout': {},
+    'paint': {
+        'fill-color': 'purple', 
+        'fill-opacity': 0
+        }
+    }); 
+
+    map.addLayer({
         'id': 'trade_routes',
         'type': 'line',
+        'slot': 'bottom',
         'source': 'trade_routes',
         'layout': {
             'line-cap': 'round',
@@ -76,125 +197,20 @@ function addSourceLayers(){
         });
 
     map.addLayer({
-        'id': 'roman_territory_300_bce',
-        'type': 'fill',
-        'source': 'roman_territory_300_bce',
-        'layout': {},
+        'id': 'dura_location',
+        'type': 'circle',
+        'slot': 'top',
+        'source': 'dura_location',
         'paint': {
-            'fill-color': '#0080ff', 
-            'fill-opacity': 0,
+            'circle-radius': 15,
+            'circle-stroke-width': 5,
+            'circle-color': 'rgba(0, 0, 0, 0)',
+            'circle-stroke-color': 'red',
+            'circle-opacity': 0
             }
         });
 
-    map.addLayer({
-    'id': 'seleucid_empire',
-    'type': 'fill',
-    'source': 'seleucid_empire', 
-    'layout': {},
-    'paint': {
-        'fill-color': '#0080ff', 
-        'fill-opacity': 0
-        }
-    });
-
-    map.addLayer({
-    'id': 'roman_territory_250ce',
-    'type': 'fill',
-    'source': 'roman_territory_250ce', 
-    'layout': {},
-    'paint': {
-        'fill-color': 'white', 
-        'fill-opacity': 0
-        }
-    });
-
-    map.addLayer({
-    'id': 'roman_territory_70ce',
-    'type': 'fill',
-    'source': 'roman_territory_70ce', 
-    'layout': {},
-    'paint': {
-        'fill-color': 'white', 
-        'fill-opacity': 0
-        }
-    });
-
-    map.addLayer({
-    'id': 'roman_territory_200ce',
-    'type': 'fill',
-    'source': 'roman_territory_200ce', 
-    'layout': {},
-    'paint': {
-        'fill-color': 'white', 
-        'fill-opacity': 0
-        }
-    });
-
-    map.addLayer({
-    'id': 'roman_relinquished_3ce',
-    'type': 'fill',
-    'source': 'roman_relinquished_3ce', 
-    'layout': {},
-    'paint': {
-        'fill-color': 'white', 
-        'fill-opacity': 0
-        }
-    });
-    
-    map.addLayer({
-    'id': 'parthian_territory_120_bce',
-    'type': 'fill',
-    'source': 'parthian_territory_120_bce', 
-    'layout': {},
-    'paint': {
-        'fill-color': 'black', 
-        'fill-opacity': 0
-        }
-    });
-
-    map.addLayer({
-        'id': 'parthian_territory_165_ce',
-        'type': 'fill',
-        'source': 'parthian_territory_165_ce',
-        'layout': {},
-        'paint': {
-        'fill-color': 'green', 
-        'fill-opacity': 0
-        }
-    })
-
-    map.addLayer({
-        'id': 'roman_territory_165_ce',
-        'type': 'fill',
-        'source': 'roman_territory_165_ce',
-        'layout': {},
-        'paint': {
-        'fill-color': 'blue', 
-        'fill-opacity': 0
-        }
-    })
-
-    map.addLayer({
-    'id': 'sassanid_territory_250sce',
-    'type': 'fill',
-    'source': 'sassanid_territory_250sce', 
-    'layout': {},
-    'paint': {
-        'fill-color': 'green', 
-        'fill-opacity': 0
-        }
-    });
-
-    map.addLayer({
-    'id': 'sasanian_seized_territory_250_ce',
-    'type': 'fill',
-    'source': 'sasanian_seized_territory_250_ce', 
-    'layout': {},
-    'paint': {
-        'fill-color': 'purple', 
-        'fill-opacity': 0
-        }
-    }); 
+        
 }
 
 /*********************************************    Config Functions    ************************************************/
@@ -352,7 +368,7 @@ var scroller = scrollama();
 map.on("load", function() {
     addSourceLayers();
 
-    map.setLayoutProperty(map.getStyle().layers[87].id, 'visibility', 'none');
+    map.setLayoutProperty(map.getStyle().layers[97].id, 'visibility', 'none');
 
     if (config.use3dTerrain) {
         map.addSource('mapbox-dem', {
@@ -398,7 +414,7 @@ map.on("load", function() {
         
         map.on("style.load", () => {
             addSourceLayers();
-            map.setLayoutProperty(map.getStyle().layers[87].id, 'visibility', 'none');
+            map.setLayoutProperty(map.getStyle().layers[97].id, 'visibility', 'none');
 
         })
 
@@ -406,6 +422,9 @@ map.on("load", function() {
             if (currentChapter === 0) {
                 config.style = "mapbox://styles/mapbox/satellite-streets-v12";
                 map.setStyle(config.style);
+                map.panTo(config.chapters[currentChapter].location.center);
+                // map.setZoom(config.chapters[currentChapter].location.zoom);
+
                 for (let key in layers){
                     if (map.getLayer(ke)) {
                         map.removeLayer(key);
@@ -415,6 +434,10 @@ map.on("load", function() {
             } else if (currentChapter === 1) {
                 config.style = "mapbox://styles/mapbox/satellite-v9";
                 map.setStyle(config.style);
+                // map.panTo(config.chapters[currentChapter].location.center);
+                // map.setZoom(config.chapters[currentChapter].location.zoom);
+
+
                 for (let key in layers){
                     if (map.getLayer(ke)) {
                         map.removeLayer(key);
