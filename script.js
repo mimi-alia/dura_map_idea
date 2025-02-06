@@ -426,7 +426,7 @@ map.on("load", function() {
                 // map.setZoom(config.chapters[currentChapter].location.zoom);
 
                 for (let key in layers){
-                    if (map.getLayer(ke)) {
+                    if (map.getLayer(key)) {
                         map.removeLayer(key);
                         map.removeSource(key);
                     }                
@@ -439,7 +439,7 @@ map.on("load", function() {
 
 
                 for (let key in layers){
-                    if (map.getLayer(ke)) {
+                    if (map.getLayer(key)) {
                         map.removeLayer(key);
                         map.removeSource(key);
                     }  
