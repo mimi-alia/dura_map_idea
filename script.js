@@ -56,70 +56,70 @@ function addSourceLayers(){
         'source': 'roman_territory_300_bce',
         'layout': {},
         'paint': {
-            'fill-color': '#0080ff', 
+            'fill-color': '#4F98CA', 
             'fill-opacity': 0,
             }
         });
 
     map.addLayer({
-    'id': 'seleucid_empire',
-    'type': 'fill',
-    'slot': 'bottom',
-    'source': 'seleucid_empire', 
-    'layout': {},
-    'paint': {
-        'fill-color': '#0080ff', 
-        'fill-opacity': 0
-        }
-    });
+        'id': 'seleucid_empire',
+        'type': 'fill',
+        'slot': 'bottom',
+        'source': 'seleucid_empire', 
+        'layout': {},
+        'paint': {
+            'fill-color': '#272727', 
+            'fill-opacity': 0
+            }
+        });
 
     map.addLayer({
-    'id': 'roman_territory_250ce',
-    'type': 'fill',
-    'slot': 'bottom',
-    'source': 'roman_territory_250ce', 
-    'layout': {},
-    'paint': {
-        'fill-color': 'white', 
-        'fill-opacity': 0
-        }
-    });
+        'id': 'roman_territory_250ce',
+        'type': 'fill',
+        'slot': 'bottom',
+        'source': 'roman_territory_250ce', 
+        'layout': {},
+        'paint': {
+            'fill-color': '#4F98CA', 
+            'fill-opacity': 0
+            }
+        });
 
     map.addLayer({
-    'id': 'roman_territory_70ce',
-    'type': 'fill',
-    'slot': 'bottom',
-    'source': 'roman_territory_70ce', 
-    'layout': {},
-    'paint': {
-        'fill-color': 'white', 
-        'fill-opacity': 0
-        }
-    });
+        'id': 'roman_territory_70ce',
+        'type': 'fill',
+        'slot': 'bottom',
+        'source': 'roman_territory_70ce', 
+        'layout': {},
+        'paint': {
+            'fill-color': '#4F98CA', 
+            'fill-opacity': 0
+            }
+        });
 
     map.addLayer({
-    'id': 'roman_territory_200ce',
-    'type': 'fill',
-    'slot': 'bottom',
-    'source': 'roman_territory_200ce', 
-    'layout': {},
-    'paint': {
-        'fill-color': 'white', 
-        'fill-opacity': 0
-        }
-    });
+        'id': 'roman_territory_200ce',
+        'type': 'fill',
+        'slot': 'bottom',
+        'source': 'roman_territory_200ce', 
+        'layout': {},
+        'paint': {
+            'fill-color': '#4F98CA', 
+           'fill-opacity': 0
+            }
+        });
 
     map.addLayer({
-    'id': 'roman_relinquished_3ce',
-    'type': 'fill',
-    'slot': 'bottom',
-    'source': 'roman_relinquished_3ce', 
-    'layout': {},
-    'paint': {
-        'fill-color': 'white', 
-        'fill-opacity': 0
-        }
-    });
+        'id': 'roman_relinquished_3ce',
+        'type': 'fill',
+        'slot': 'bottom',
+        'source': 'roman_relinquished_3ce', 
+        'layout': {},
+        'paint': {
+            'fill-color': '#4F98CA', 
+            'fill-opacity': 0
+            }
+        });
     
     map.addLayer({
     'id': 'parthian_territory_120_bce',
@@ -128,7 +128,7 @@ function addSourceLayers(){
     'source': 'parthian_territory_120_bce', 
     'layout': {},
     'paint': {
-        'fill-color': 'black', 
+        'fill-color': '#480032', 
         'fill-opacity': 0
         }
     });
@@ -140,7 +140,7 @@ function addSourceLayers(){
         'source': 'parthian_territory_165_ce',
         'layout': {},
         'paint': {
-        'fill-color': 'green', 
+        'fill-color': '#480032', 
         'fill-opacity': 0
         }
     })
@@ -152,7 +152,7 @@ function addSourceLayers(){
         'source': 'roman_territory_165_ce',
         'layout': {},
         'paint': {
-        'fill-color': 'blue', 
+        'fill-color': '#4F98CA', 
         'fill-opacity': 0
         }
     })
@@ -164,7 +164,7 @@ function addSourceLayers(){
     'source': 'sassanid_territory_250sce', 
     'layout': {},
     'paint': {
-        'fill-color': 'green', 
+        'fill-color': '#50D890', 
         'fill-opacity': 0
         }
     });
@@ -176,7 +176,7 @@ function addSourceLayers(){
     'source': 'sasanian_seized_territory_250_ce', 
     'layout': {},
     'paint': {
-        'fill-color': 'purple', 
+        'fill-color': '#4F98CA', 
         'fill-opacity': 0
         }
     }); 
@@ -438,7 +438,7 @@ map.on("load", function() {
                 config.style = "mapbox://styles/mapbox/satellite-streets-v12";
                 map.setStyle(config.style);
                 map.panTo(config.chapters[currentChapter].location.center);
-                // map.setZoom(config.chapters[currentChapter].location.zoom);
+                map.setZoom(config.chapters[currentChapter].location.zoom);
 
                 for (let key in layers){
                     if (map.getLayer(key)) {
@@ -449,8 +449,8 @@ map.on("load", function() {
             } else if (currentChapter === 1) {
                 config.style = "mapbox://styles/mapbox/satellite-v9";
                 map.setStyle(config.style);
-                // map.panTo(config.chapters[currentChapter].location.center);
-                // map.setZoom(config.chapters[currentChapter].location.zoom);
+                map.panTo(config.chapters[currentChapter].location.center);
+                map.setZoom(config.chapters[currentChapter].location.zoom);
 
 
                 for (let key in layers){
