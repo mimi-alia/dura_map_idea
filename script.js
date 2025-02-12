@@ -213,6 +213,22 @@ function addSourceLayers(){
         
 }
 
+
+// Helper function for changinging layer gradient, save for when their data type changes
+// function styleFillLayers(){
+//     let mapLayers = map.getStyle().layers;
+//     let fillLayers = mapLayers.filter(layer => layer["type"] === "fill");
+
+//     const colors = ['#ff0000', '#00ff00', '#0000ff']; // Replace with your gradient colors  
+
+//     return colors.forEach((color, index) => {
+//         fillLayers.forEach((layer) => {
+//             map.setPaintProperty(layer, "fill-opacity", 1 - (index / color.length));
+//         })
+//     })
+
+// }
+
 /*********************************************    Config Functions    ************************************************/
 
 // dom sections
@@ -367,7 +383,6 @@ var scroller = scrollama();
 
 map.on("load", function() {
     addSourceLayers();
-
     map.setLayoutProperty(map.getStyle().layers[97].id, 'visibility', 'none');
 
     if (config.use3dTerrain) {
