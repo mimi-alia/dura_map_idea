@@ -437,8 +437,8 @@ map.on("load", function() {
             if (currentChapter === 0) {
                 config.style = "mapbox://styles/mapbox/satellite-streets-v12";
                 map.setStyle(config.style);
-                map.panTo(config.chapters[currentChapter].location.center);
-                map.setZoom(config.chapters[currentChapter].location.zoom);
+                // map.panTo(config.chapters[currentChapter].location.center);
+                // map.setZoom(config.chapters[currentChapter].location.zoom);
 
                 for (let key in layers){
                     if (map.getLayer(key)) {
@@ -449,8 +449,8 @@ map.on("load", function() {
             } else if (currentChapter === 1) {
                 config.style = "mapbox://styles/mapbox/satellite-v9";
                 map.setStyle(config.style);
-                map.panTo(config.chapters[currentChapter].location.center);
-                map.setZoom(config.chapters[currentChapter].location.zoom);
+                // map.panTo(config.chapters[currentChapter].location.center);
+                // map.setZoom(config.chapters[currentChapter].location.zoom);
 
 
                 for (let key in layers){
