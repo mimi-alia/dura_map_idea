@@ -426,44 +426,53 @@ map.on("load", function() {
         response.element.classList.add('active');
         map[chapter.mapAnimation || 'flyTo'](chapter.location);
 
+        if (currentChapter === 0) {
+            console.log("chapter 0 loaded")
+        }
+
         
         map.on("style.load", () => {
             addSourceLayers();
+            console.log(`keys and sources added`);
             map.setLayoutProperty(map.getStyle().layers[97].id, 'visibility', 'none');
 
         })
 
-        map.on("zoom", () => {
-            if (currentChapter === 0) {
-                config.style = "mapbox://styles/mapbox/satellite-streets-v12";
-                map.setStyle(config.style);
-                // map.panTo(config.chapters[currentChapter].location.center);
-                // map.setZoom(config.chapters[currentChapter].location.zoom);
+        
 
-                for (let key in layers){
-                    if (map.getLayer(key)) {
-                        map.removeLayer(key);
-                        map.removeSource(key);
-                    }                
-                 }
-            } else if (currentChapter === 1) {
-                config.style = "mapbox://styles/mapbox/satellite-v9";
-                map.setStyle(config.style);
-                // map.panTo(config.chapters[currentChapter].location.center);
-                // map.setZoom(config.chapters[currentChapter].location.zoom);
+        // map.on("zoom", () => {
+        //     if (currentChapter === 0) {
+        //         config.style = "mapbox://styles/mapbox/satellite-streets-v12";
+        //         map.setStyle(config.style);
+        //         // map.panTo(config.chapters[currentChapter].location.center);
+        //         // map.setZoom(config.chapters[currentChapter].location.zoom);
+
+        //         for (let key in layers){
+        //             if (map.getLayer(key)) {
+        //                 map.removeLayer(key);
+        //                 map.removeSource(key);
+        //                 console.log(`keys and sources for ${key} removed`);
+        //             }                
+        //          }
+        //     } else if (currentChapter === 1) {
+        //         config.style = "mapbox://styles/mapbox/satellite-v9";
+        //         map.setStyle(config.style);
+        //         // map.panTo(config.chapters[currentChapter].location.center);
+        //         // map.setZoom(config.chapters[currentChapter].location.zoom);
 
 
-                for (let key in layers){
-                    if (map.getLayer(key)) {
-                        map.removeLayer(key);
-                        map.removeSource(key);
-                    }  
-                 }
-                //  map.setLayoutProperty(map[chapter.chapters[1]], "visibility", "visible");
-            }
+        //         for (let key in layers){
+        //             if (map.getLayer(key)) {
+        //                 map.removeLayer(key);
+        //                 map.removeSource(key);
+        //                 console.log(`keys and sources for ${key} removed`);
+        //             }  
+        //          }
+        //         //  map.setLayoutProperty(map[chapter.chapters[1]], "visibility", "visible");
+        //     }
 
         
-        })
+        // })
 
         // Incase you do not want to have a dynamic inset map,
         // rather want to keep it a static view but still change the
