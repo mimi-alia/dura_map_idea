@@ -119,6 +119,21 @@ a, a:hover, a:visited {
     }
 }
 
+.container{
+    height: 200px;
+    width: 100px;
+    padding:20px;
+    background-color: #fff;
+    color: #0071bc;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    position: fixed;
+    z-index: 10;
+    bottom: 20px;
+    right: 20px;
+}
+
+
 /* Fix issue on mobile browser where scroll breaks  */
 .mapboxgl-canvas-container.mapboxgl-touch-zoom-rotate.mapboxgl-touch-drag-pan,
 .mapboxgl-canvas-container.mapboxgl-touch-zoom-rotate.mapboxgl-touch-drag-pan .mapboxgl-canvas {

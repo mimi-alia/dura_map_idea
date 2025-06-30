@@ -383,7 +383,7 @@ var scroller = scrollama();
 
 map.on("load", function() {
     addSourceLayers();
-    map.setLayoutProperty(map.getStyle().layers[97].id, 'visibility', 'none');
+    // map.setLayoutProperty(map.getStyle().layers[97].id, 'visibility', 'none');
 
     if (config.use3dTerrain) {
         map.addSource('mapbox-dem', {
@@ -426,19 +426,16 @@ map.on("load", function() {
         response.element.classList.add('active');
         map[chapter.mapAnimation || 'flyTo'](chapter.location);
 
-        if (currentChapter === 0) {
-            console.log("chapter 0 loaded")
-        }
-
+    
         
         map.on("style.load", () => {
             addSourceLayers();
             console.log(`keys and sources added`);
-            map.setLayoutProperty(map.getStyle().layers[97].id, 'visibility', 'none');
+            // map.setLayoutProperty(map.getStyle().layers[97].id, 'visibility', 'none');
 
         })
 
-        
+
 
         // map.on("zoom", () => {
         //     if (currentChapter === 0) {
@@ -580,6 +577,52 @@ map.on("load", function() {
             
 });
 
+
+if (currentChapter === 0) {
+            console.log("chapter 0 loaded")
+        }
+
+        const backButton = document.querySelector(".button1");
+        const nextButton = document.querySelector(".button2");
+        const buttonList = [backButton, nextButton];
+
+
+        function goNext(){
+                console.log(`style is streets v9. Switching to ${config.style}`)
+                 for (let key in layers){
+                            if (map.getLayer(key)) {
+                                map.removeLayer(key);
+                                map.removeSource(key);
+                            }                
+                      }
+        }  
+
+        function goBack(){
+            console.log(`style is streets v12. Switching to ${config.style}`)
+              for (let key in layers){
+                            if (map.getLayer(key)) {
+                                map.removeLayer(key);
+                                map.removeSource(key);
+                         }                
+                        }
+        } 
+
+
+        nextButton.addEventListener("click", () => {
+            if (config.style !== "mapbox://styles/mapbox/satellite-streets-v12") {
+                config.style = "mapbox://styles/mapbox/satellite-streets-v12";
+                map.setStyle(config.style);
+                goNext();
+            }
+        });
+
+        backButton.addEventListener("click", () => {
+            if (config.style !== "mapbox://styles/mapbox/satellite-v9") {
+                config.style = "mapbox://styles/mapbox/satellite-v9";
+                map.setStyle(config.style);
+                goBack();
+            }
+        });
 //update config.style based on the config.chapter, with each config.chapter after the first having a plain satellite image
     // map.on("zoom", () =>{
     //     for (let key in layers){
