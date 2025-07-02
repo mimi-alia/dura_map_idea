@@ -433,12 +433,18 @@ map.on("load", function() {
         if(currentStyle && currentStyle != formerStyle){
             map.once("style.load", () => {
                 addSourceLayers();
+                if (currentChapter === 0){
+                    map.setLayoutProperty(map.getStyle().layers[97].id, "visibility", "none")
+
+                }
             })
             map.setStyle(currentStyle);
             formerStyle = currentStyle;
-            console.log(`previous style is ${formerStyle}, switching to ${currentStyle}`)
+            // console.log(`previous style is ${formerStyle}, switching to ${currentStyle}`)
 
         }
+
+
 
 
 
