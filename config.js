@@ -18,6 +18,7 @@ var config = {
             id: 'modern-political-borders',
             alignment: 'left',
             hidden: false,
+            style: 'mapbox://styles/mapbox/satellite-streets-v12',
             title: '',
             image: '',
             description: 'Substantial archaeological remains from the ancient city of Dura-Europos are located in modern eastern Syria, on the western bank of the Euphrates River, near the border with Iraq. The site and the objects that descend from it–including many rare survivals–are a critical resource for the study of life in antiquity.',
@@ -107,6 +108,7 @@ var config = {
             alignment: 'right',
             hidden: false,
             title: '',
+            style: 'mapbox://styles/mapbox/satellite-v9',
             image: '',
             description: 'Thanks to its location relative to local and trans-regional trade routes, and at the frontier between powerful empires in the East and West, this ancient city was a crossroads of cultures.',
             location: {
@@ -141,6 +143,7 @@ var config = {
             alignment: 'left',
             hidden: false,
             title: '',
+            style: 'mapbox://styles/mapbox/satellite-v9',
             image: '',
             description: 'The city was founded c. 300 BCE by the Hellenistic (Greek) Seleucid Empire.',
             location: {
@@ -174,6 +177,7 @@ var config = {
             alignment: 'right',
             hidden: false,
             title: '',
+            style: 'mapbox://styles/mapbox/satellite-v9',
             image: '',
             description: 'On the other side of the Mediterranean sits the Roman Empire whose territory would steadily grow over the course of the next centuries.',
             location: {
@@ -208,6 +212,7 @@ var config = {
             alignment: 'left',
             hidden: false,
             title: '',
+            style: 'mapbox://styles/mapbox/satellite-v9',
             image: '',
             description: 'By the late second century BCE, Dura came under the control of the growing Arsacid (Parthian) Empire.',
             location: {
@@ -241,6 +246,7 @@ var config = {
             alignment: 'right',
             hidden: false,
             title: '',
+            style: 'mapbox://styles/mapbox/satellite-v9',
             image: '',
             description: 'By the late 2nd century CE, the site had been absorbed into the territory of the Roman Empire to the West.',
             location: {
@@ -282,6 +288,7 @@ var config = {
             alignment: 'left',
             hidden: false,
             title: '',
+            style: 'mapbox://styles/mapbox/satellite-v9',
             image: '',
             description: 'Dura\’s ancient occupation came to an end around 256 CE, when it was one of a number of Roman cities besieged and conquered by the nascent Sasanian Persian Empire as it expanded its territory westward.',
             location: {
@@ -331,6 +338,7 @@ var config = {
             alignment: 'center',
             hidden: false,
             title: '',
+            style: 'mapbox://styles/mapbox/satellite-v9',
             image: '',
             description: 'But history didn\’t stop when Dura-Europos fell.',
             location: {
