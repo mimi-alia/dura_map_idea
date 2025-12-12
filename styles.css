@@ -140,3 +140,16 @@ a, a:hover, a:visited {
     touch-action: unset;
 }
 
+
+@media (max-width: 500px) {
+    body {
+        font-size: 10px;
+        line-height: 28px;
+        width: 80vw;
+        /* font-family: 'Courier New', Courier, monospace; */
+    }
+
+    #map{
+
+    }
+}
