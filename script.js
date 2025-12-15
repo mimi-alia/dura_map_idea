@@ -353,7 +353,6 @@ let currentChapter;
 let formerStyle = config.chapters[0].style;
 
 
-
 // Create a inset map if enabled in config.js
 if (config.inset) {
  var insetMap = new mapboxgl.Map({
@@ -379,11 +378,9 @@ if (config.showMarkers) {
 // instantiate the scrollama
 var scroller = scrollama();
 
-
-
-
 map.on("load", function() {
     addSourceLayers();
+    map.resize();
     // map.setLayoutProperty(map.getStyle().layers[97].id, 'visibility', 'none');
 
     if (config.use3dTerrain) {
@@ -433,9 +430,16 @@ map.on("load", function() {
         if(currentStyle && currentStyle != formerStyle){
             map.once("style.load", () => {
                 addSourceLayers();
+                map.resize();
+                
                 if (currentChapter === 0){
                     map.setLayoutProperty(map.getStyle().layers[97].id, "visibility", "none")
 
+                }
+                
+                if (chapter.bounds) {
+                    map.fitBounds(chapter.bounds, {
+                    });
                 }
             })
             map.setStyle(currentStyle);
