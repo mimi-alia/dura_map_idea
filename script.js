@@ -214,20 +214,6 @@ function addSourceLayers(){
 }
 
 
-// Helper function for changinging layer gradient, save for when their data type changes
-// function styleFillLayers(){
-//     let mapLayers = map.getStyle().layers;
-//     let fillLayers = mapLayers.filter(layer => layer["type"] === "fill");
-
-//     const colors = ['#ff0000', '#00ff00', '#0000ff']; // Replace with your gradient colors  
-
-//     return colors.forEach((color, index) => {
-//         fillLayers.forEach((layer) => {
-//             map.setPaintProperty(layer, "fill-opacity", 1 - (index / color.length));
-//         })
-//     })
-
-// }
 
 /*********************************************    Config Functions    ************************************************/
 
@@ -239,37 +225,6 @@ features.setAttribute('id', 'features');
 var header = document.createElement('div');
 
 
-// Elements to generate if config elements have values / text added to them
-
-// if title element in config obj is true
-if (config.title) {
-    // create an h1 element
-    var titleText = document.createElement('h1');
-    // add content from config.title's value
-    titleText.innerText = config.title;
-    // add to header
-    header.appendChild(titleText);
-}
-
-if (config.subtitle) {
-    var subtitleText = document.createElement('h2');
-    subtitleText.innerText = config.subtitle;
-    header.appendChild(subtitleText);
-}
-
-if (config.byline) {
-    var bylineText = document.createElement('p');
-    bylineText.innerText = config.byline;
-    header.appendChild(bylineText);
-}
-
-
-// adds header generated in js to story div created in the html
-if (header.innerText.length > 0) {
-    header.classList.add(config.theme);
-    header.setAttribute('id', 'header');
-    story.appendChild(header);
-}
 
 // chapters
 config.chapters.forEach((record, idx) => {
@@ -354,26 +309,7 @@ let formerStyle = config.chapters[0].style;
 
 
 // Create a inset map if enabled in config.js
-if (config.inset) {
- var insetMap = new mapboxgl.Map({
-    container: 'mapInset', // container id
-    style: 'mapbox://styles/mapbox/dark-v10', //hosted style id
-    center: config.chapters[0].location.center,
-    // Hardcode above center value if you want insetMap to be static.
-    zoom: 3, // starting zoom
-    hash: false,
-    interactive: false,
-    attributionControl: false,
-    //Future: Once official mapbox-gl-js has globe view enabled,
-    //insetmap can be a globe with the following parameter.
-    //projection: 'globe'
-  });
-}
 
-if (config.showMarkers) {
-    var marker = new mapboxgl.Marker({ color: config.markerColor });
-    marker.setLngLat(config.chapters[0].location.center).addTo(map);
-}
 
 // instantiate the scrollama
 var scroller = scrollama();
@@ -383,27 +319,7 @@ map.on("load", function() {
     map.resize();
     // map.setLayoutProperty(map.getStyle().layers[97].id, 'visibility', 'none');
 
-    if (config.use3dTerrain) {
-        map.addSource('mapbox-dem', {
-            'type': 'raster-dem',
-            'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
-            'tileSize': 512,
-            'maxzoom': 14
-        });
-        // add the DEM source as a terrain layer with exaggerated height
-        map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
 
-        // add a sky layer that will show when the map is highly pitched
-        map.addLayer({
-            'id': 'sky',
-            'type': 'sky',
-            'paint': {
-                'sky-type': 'atmosphere',
-                'sky-atmosphere-sun': [0.0, 0.0],
-                'sky-atmosphere-sun-intensity': 15
-            }
-        });
-    };
 
     // As the map moves, grab and update bounds in inset map.
     if (config.inset) {
@@ -444,10 +360,37 @@ map.on("load", function() {
             })
             map.setStyle(currentStyle);
             formerStyle = currentStyle;
-            // console.log(`previous style is ${formerStyle}, switching to ${currentStyle}`)
 
         }
 
+   
+
+        if (config.showMarkers) {
+            marker.setLngLat(chapter.location.center);
+        }
+        //Deleting this removes  the opacity setting on chapter load
+        if (chapter.onChapterEnter.length > 0) {
+            chapter.onChapterEnter.forEach(setLayerOpacity);
+        }
+        if (chapter.callback) {
+            window[chapter.callback]();
+        }
+        if (chapter.rotateAnimation) {
+            map.once('moveend', () => {
+                const rotateNumber = map.getBearing();
+                map.rotateTo(rotateNumber + 180, {
+                    duration: 30000, easing: function (t) {
+                        return t;
+                    }
+                });
+            });
+        }
+        if (config.auto) {
+             var next_chapter = (current_chapter + 1) % config.chapters.length;
+             map.once('moveend', () => {
+                 document.querySelectorAll('[data-scrollama-index="' + next_chapter.toString() + '"]')[0].scrollIntoView();
+             });
+        }
     })
     .onStepExit(response => {
         var chapter = config.chapters.find(chap => chap.id === response.element.id);
@@ -461,8 +404,18 @@ map.on("load", function() {
     
 
 
+    if (config.auto) {
+        document.querySelectorAll('[data-scrollama-index="0"]')[0].scrollIntoView();
+    }
+
+            
+});
+
+function updateInsetLayer(bounds) {
+    insetMap.getSource('boundsSource').setData(bounds);
+}
+
 
 
 // setup resize event
 window.addEventListener('resize', scroller.resize);
-
