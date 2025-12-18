@@ -355,13 +355,7 @@ var map = new mapboxgl.Map({
 let currentChapter;
 let formerStyle = config.chapters[0].style;
 
-map.on("resize", () => {
-    if (window.innerWidth < 700) {
-    console.log('window width less than 700');
-} else {
-    console.log('window width greater than 700');
-}
-});
+
 
 
 
@@ -436,7 +430,41 @@ map.on("load", function() {
         response.element.classList.add('active');
         map[chapter.mapAnimation || 'flyTo'](mapLocation);
 
+        //attempting to make it so it resizes when the viewport changes, not just when the object is created
 
+        // map.resize();
+        // map.on("resize", () => {
+        //     if (isMobile){
+        //         map.setCenter(chapter.mobile_location.center);
+        //         map.setZoom(chapter.mobile_location.zoom);
+        //     } else {
+        //         map.setCenter(chapter.location.center);
+        //         map.setZoom(chapter.location.zoom);
+        //     }
+        // })
+
+        const currentStyle = chapter.style;
+
+        if(currentStyle && currentStyle != formerStyle){
+            map.once("style.load", () => {
+                addSourceLayers();
+                map.resize();
+                
+                if (currentChapter === 0){
+                    map.setLayoutProperty(map.getStyle().layers[97].id, "visibility", "none")
+
+                }
+                
+                if (chapter.bounds) {
+                    map.fitBounds(chapter.bounds, {
+                    });
+                }
+            })
+            map.setStyle(currentStyle);
+            formerStyle = currentStyle;
+            // console.log(`previous style is ${formerStyle}, switching to ${currentStyle}`)
+
+        }
         // map.on("zoom", () => {
         //     if (currentChapter === 0) {
         //         config.style = "mapbox://styles/mapbox/satellite-streets-v12";
