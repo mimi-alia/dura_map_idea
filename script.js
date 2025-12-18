@@ -344,6 +344,7 @@ var map = new mapboxgl.Map({
     zoom: config.chapters[0].location.zoom,
     bearing: config.chapters[0].location.bearing,
     pitch: config.chapters[0].location.pitch,
+    maxBounds: config.chapters[0].location.bounds,
     interactive: false,
     transformRequest: transformRequest,
     projection: config.projection
