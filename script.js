@@ -342,6 +342,13 @@ var mapSettings = isMobile ? config.chapters[0].mobile_location : config.chapter
 
 var map = new mapboxgl.Map({
     container: 'map',
+    style: config.style,
+    center: config.chapters[0].mobile_location.center,
+    zoom: mapSettings.zoom,
+    bearing: mapSettings.bearing,
+    pitch: mapSettings.pitch,
+    interactive: false,
+    transformRequest: transformRequest,
 
 });
 
@@ -425,32 +432,9 @@ map.on("load", function() {
         var current_chapter = config.chapters.findIndex(chap => chap.id === response.element.id);
         var chapter = config.chapters[current_chapter]; 
         currentChapter = current_chapter;
+        let mapLocation = isMobile ? chapter.mobile_location : chapter.location;
         response.element.classList.add('active');
-        map[chapter.mapAnimation || 'flyTo'](chapter.location);
-
-
-        const currentStyle = chapter.style;
-
-        if(currentStyle && currentStyle != formerStyle){
-            map.once("style.load", () => {
-                addSourceLayers();
-                map.resize();
-                
-                if (currentChapter === 0){
-                    map.setLayoutProperty(map.getStyle().layers[97].id, "visibility", "none")
-
-                }
-                
-                if (chapter.bounds) {
-                    map.fitBounds(chapter.bounds, {
-                    });
-                }
-            })
-            map.setStyle(currentStyle);
-            formerStyle = currentStyle;
-            // console.log(`previous style is ${formerStyle}, switching to ${currentStyle}`)
-
-        }
+        map[chapter.mapAnimation || 'flyTo'](mapLocation);
 
 
         // map.on("zoom", () => {
