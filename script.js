@@ -344,7 +344,6 @@ var map = new mapboxgl.Map({
     zoom: config.chapters[0].location.zoom,
     bearing: config.chapters[0].location.bearing,
     pitch: config.chapters[0].location.pitch,
-    maxBounds: config.chapters[0].location.bounds,
     interactive: false,
     transformRequest: transformRequest,
     projection: config.projection
@@ -353,13 +352,6 @@ var map = new mapboxgl.Map({
 let currentChapter;
 let formerStyle = config.chapters[0].style;
 
-map.on("move", () => {
-    console.log("moved")
-})
-
-map.on("style.load", () => {
-    console.log("style loaded");
-});
 // Create a inset map if enabled in config.js
 if (config.inset) {
  var insetMap = new mapboxgl.Map({
@@ -416,11 +408,6 @@ map.on("load", function() {
     map.on('move', getInsetBounds);
     }
 
-    map.on("resize", () => {
-        console.log(`Current max bounds after resize: ${map.getMaxBounds()}`);
-        console.log(`Current bounds after resize: ${map.getBounds()}`);
-    })
-    
     // setup the instance, pass callback functions
     scroller
     .setup({
@@ -434,10 +421,6 @@ map.on("load", function() {
         currentChapter = current_chapter;
         response.element.classList.add('active');
         map[chapter.mapAnimation || 'flyTo'](chapter.location);
-
-        map.setMaxBounds(chapter.location.bounds);
-        console.log(`Current max bounds on step enter: ${map.getMaxBounds()}`);
-        console.log(`Current bounds on step enter: ${map.getBounds()}`);
 
 
         const currentStyle = chapter.style;
