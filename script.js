@@ -337,16 +337,12 @@ const transformRequest = (url) => {
     }
 }
 
+var isMobile = window.innerWidth < 700;
+var mapSettings = isMobile ? config.chapters[0].mobile_location : config.chapters[0].location;
+
 var map = new mapboxgl.Map({
     container: 'map',
-    style: config.style,
-    center: config.chapters[0].location.center,
-    zoom: config.chapters[0].location.zoom,
-    bearing: config.chapters[0].location.bearing,
-    pitch: config.chapters[0].location.pitch,
-    interactive: false,
-    transformRequest: transformRequest,
-    projection: config.projection
+
 });
 
 let currentChapter;
