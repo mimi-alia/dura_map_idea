@@ -218,7 +218,7 @@ function addSourceLayers(){
 /*********************************************    Config Functions    ************************************************/
 
 // dom sections
-var story = document.getElementById('story');
+//var story = document.getElementById('story');
 var features = document.createElement('div');
 features.setAttribute('id', 'features');
 
@@ -264,7 +264,7 @@ config.chapters.forEach((record, idx) => {
     features.appendChild(container);
 });
 
-story.appendChild(features);
+//story.appendChild(features);
 
 var footer = document.createElement('div');
 
@@ -299,6 +299,7 @@ var map = new mapboxgl.Map({
     zoom: config.chapters[0].location.zoom,
     bearing: config.chapters[0].location.bearing,
     pitch: config.chapters[0].location.pitch,
+    maxBounds: config.chapters[0].location.bounds,
     interactive: false,
     transformRequest: transformRequest,
     projection: config.projection
@@ -312,11 +313,13 @@ let formerStyle = config.chapters[0].style;
 
 
 // instantiate the scrollama
-var scroller = scrollama();
+// var scroller = scrollama();
+
+
 
 map.on("load", function() {
+    console.log("Map has loaded");
     addSourceLayers();
-    map.resize();
     // map.setLayoutProperty(map.getStyle().layers[97].id, 'visibility', 'none');
 
 
@@ -325,82 +328,87 @@ map.on("load", function() {
     if (config.inset) {
     map.on('move', getInsetBounds);
     }
-    
+
+
+    map.once('resize', () => {
+    console.log('A resize event occurred.');
+});
+
     // setup the instance, pass callback functions
-    scroller
-    .setup({
-        step: '.step',
-        offset: 0.5,
-        progress: true
-    })
-    .onStepEnter(async response => {
-        var current_chapter = config.chapters.findIndex(chap => chap.id === response.element.id);
-        var chapter = config.chapters[current_chapter]; 
-        currentChapter = current_chapter;
-        response.element.classList.add('active');
-        map[chapter.mapAnimation || 'flyTo'](chapter.location);
+    // scroller
+    // .setup({
+    //     step: '.step',
+    //     offset: 0.5,
+    //     progress: true
+    // })
+    // .onStepEnter(async response => {
+    //     var current_chapter = config.chapters.findIndex(chap => chap.id === response.element.id);
+    //     var chapter = config.chapters[current_chapter]; 
+    //     currentChapter = current_chapter;
+    //     response.element.classList.add('active');
+    //     map[chapter.mapAnimation || 'flyTo'](chapter.location);
 
 
-        const currentStyle = chapter.style;
+    //     const currentStyle = chapter.style;
 
-        if(currentStyle && currentStyle != formerStyle){
-            map.once("style.load", () => {
-                addSourceLayers();
-                map.resize();
+    //     if(currentStyle && currentStyle != formerStyle){
+    //         map.once("style.load", () => {
+    //             addSourceLayers();
+    //             map.resize();
                 
-                if (currentChapter === 0){
-                    map.setLayoutProperty(map.getStyle().layers[97].id, "visibility", "none")
+    //             if (currentChapter === 0){
+    //                 map.setLayoutProperty(map.getStyle().layers[97].id, "visibility", "none")
 
-                }
+    //             }
                 
-                if (chapter.bounds) {
-                    map.fitBounds(chapter.bounds, {
-                    });
-                }
-            })
-            map.setStyle(currentStyle);
-            formerStyle = currentStyle;
+    //             if (chapter.bounds) {
+    //                 map.fitBounds(chapter.bounds, {
+    //                 });
+    //             }
+    //         })
+    //         map.setStyle(currentStyle);
+    //         formerStyle = currentStyle;
 
-        }
+    //     }
 
    
 
-        if (config.showMarkers) {
-            marker.setLngLat(chapter.location.center);
-        }
-        //Deleting this removes  the opacity setting on chapter load
-        if (chapter.onChapterEnter.length > 0) {
-            chapter.onChapterEnter.forEach(setLayerOpacity);
-        }
-        if (chapter.callback) {
-            window[chapter.callback]();
-        }
-        if (chapter.rotateAnimation) {
-            map.once('moveend', () => {
-                const rotateNumber = map.getBearing();
-                map.rotateTo(rotateNumber + 180, {
-                    duration: 30000, easing: function (t) {
-                        return t;
-                    }
-                });
-            });
-        }
-        if (config.auto) {
-             var next_chapter = (current_chapter + 1) % config.chapters.length;
-             map.once('moveend', () => {
-                 document.querySelectorAll('[data-scrollama-index="' + next_chapter.toString() + '"]')[0].scrollIntoView();
-             });
-        }
-    })
-    .onStepExit(response => {
-        var chapter = config.chapters.find(chap => chap.id === response.element.id);
+    //     if (config.showMarkers) {
+    //         marker.setLngLat(chapter.location.center);
+    //     }
+    //     //Deleting this removes  the opacity setting on chapter load
+    //     if (chapter.onChapterEnter.length > 0) {
+    //         chapter.onChapterEnter.forEach(setLayerOpacity);
+    //     }
+    //     if (chapter.callback) {
+    //         window[chapter.callback]();
+    //     }
+    //     if (chapter.rotateAnimation) {
+    //         map.once('moveend', () => {
+    //             const rotateNumber = map.getBearing();
+    //             map.rotateTo(rotateNumber + 180, {
+    //                 duration: 30000, easing: function (t) {
+    //                     return t;
+    //                 }
+    //             });
+    //         });
+    //     }
+    //     if (config.auto) {
+    //          var next_chapter = (current_chapter + 1) % config.chapters.length;
+    //          map.once('moveend', () => {
+    //              document.querySelectorAll('[data-scrollama-index="' + next_chapter.toString() + '"]')[0].scrollIntoView();
+    //          });
+    //     }
+    // })
+    // .onStepExit(response => {
+    //     var chapter = config.chapters.find(chap => chap.id === response.element.id);
 
-        response.element.classList.remove('active');
-        if (chapter.onChapterExit.length > 0) {
-            chapter.onChapterExit.forEach(setLayerOpacity);
-        }
+    //     response.element.classList.remove('active');
+    //     if (chapter.onChapterExit.length > 0) {
+    //         chapter.onChapterExit.forEach(setLayerOpacity);
+    //     }
  
-    });
+    // });
     
 
 
@@ -410,6 +418,14 @@ map.on("load", function() {
 
             
 });
+
+// map.on("style.load", function(){
+//     console.log(`Max bounds default: ${map.getBounds()}`)
+//     map.setMaxBounds([[35.705511590607614, 31.855080761681364],[45.81864840939082, 37.29961970393096]]);
+//     console.log(`Max bounds altered: ${map.getBounds()}`)
+
+// })
+
 
 function updateInsetLayer(bounds) {
     insetMap.getSource('boundsSource').setData(bounds);
