@@ -352,6 +352,16 @@ var map = new mapboxgl.Map({
 let currentChapter;
 let formerStyle = config.chapters[0].style;
 
+map.on("resize", () => {
+    if (window.innerWidth < 700) {
+    console.log('window width less than 700');
+} else {
+    console.log('window width greater than 700');
+}
+});
+
+
+
 // Create a inset map if enabled in config.js
 if (config.inset) {
  var insetMap = new mapboxgl.Map({
