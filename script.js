@@ -343,7 +343,7 @@ var mapSettings = isMobile ? config.chapters[0].mobile_location : config.chapter
 var map = new mapboxgl.Map({
     container: 'map',
     style: config.style,
-    center: config.chapters[0].mobile_location.center,
+    center: mapSettings.center,
     zoom: mapSettings.zoom,
     bearing: mapSettings.bearing,
     pitch: mapSettings.pitch,
@@ -382,6 +382,8 @@ if (config.showMarkers) {
 }
 
 // instantiate the scrollama
+
+
 var scroller = scrollama();
 
 map.on("load", function() {
